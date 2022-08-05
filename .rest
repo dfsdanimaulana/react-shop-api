@@ -1,0 +1,45 @@
+# get all user data
+GET http://localhost:5000/api/user
+
+###
+# get user data by id, admin required
+GET http://localhost:5000/api/user/62ed15ba6ad9c305a2f16548
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVkMTViYTZhZDljMzA1YTJmMTY1NDgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTk3MDUzMjgsImV4cCI6MTY1OTk2NDUyOH0.klUNovGykTM6w70md654BJF5X9gjHSaA3BV4Ifhd5G8
+
+
+###
+# update user data by id
+PUT http://localhost:5000/api/user/62ed0051ed07eeab13bad061
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVkMDA1MWVkMDdlZWFiMTNiYWQwNjEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU5NzAwODU5LCJleHAiOjE2NTk5NjAwNTl9.sRcsxOLgVg7RMxtMfN5MRE86RRXUbzNUQvAtLvOgTyA
+
+{
+    "username": "testfournew"
+}
+
+###
+# delete user data by id
+DELETE http://localhost:5000/api/user/62ed0051ed07eeab13bad061
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVkMDA1MWVkMDdlZWFiMTNiYWQwNjEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU5NzAwODU5LCJleHAiOjE2NTk5NjAwNTl9.sRcsxOLgVg7RMxtMfN5MRE86RRXUbzNUQvAtLvOgTyA
+
+
+###
+# create new user
+POST http://localhost:5000/api/auth/register
+content-type: application/json
+
+{
+    "username": "admin",
+    "email": "admin@emai",
+    "password": "test"
+}
+
+###
+# login user
+POST http://localhost:5000/api/auth/login
+content-type: application/json
+
+{
+    "username": "admin",
+    "password": "test"
+}
