@@ -1,7 +1,10 @@
 // create user route
 const router = require('express').Router()
 const User = require('../models/User')
-const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('../middleware/verifyToken')
+const {
+    verifyTokenAndAuthorization,
+    verifyTokenAndAdmin
+} = require('../middleware/verifyToken')
 const { encryptPassword } = require('../middleware/encryptPassword')
 
 // get all users from database asyncronously
@@ -12,6 +15,40 @@ router.get('/', async (req, res) => {
             ? await User.find({}).sort({ _id: -1 }).limit(5)
             : await User.find({})
         res.json(users)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+// get user stats asyncronously
+router.get('/stats', verifyTokenAndAdmin, async (req, res) => {
+    const date = new Date()
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
+
+    try {
+        const data = await User.aggregate([
+            {
+                $match: {
+                    createdAt: {
+                        $gte: lastYear
+                    }
+                }
+            },
+            {
+                $project: {
+                    month: {
+                        $month: '$createdAt'
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: '$month',
+                    total: { $sum: 1 }
+                }
+            }
+        ])
+        res.json(data)
     } catch (err) {
         res.status(400).json(err)
     }
@@ -53,7 +90,10 @@ router.put('/:id', verifyTokenAndAuthorization, async (req, res) => {
 // delete user asyncronously
 router.delete('/:id', verifyTokenAndAuthorization, async (req, res) => {
     try {
-        await User.findByIdAndDelete(req.params.id)
+        const deletedUser = await User.findByIdAndDelete(req.params.id)
+        if (!deletedUser) {
+            return res.status(400).json({ message: 'User not found' })
+        }
         res.json({ message: 'User deleted!' })
     } catch (err) {
         res.status(400).json(err)
