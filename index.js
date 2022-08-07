@@ -14,6 +14,7 @@ const authRoutes = require('./routes/auth')
 const productRoutes = require('./routes/product')
 const orderRoutes = require('./routes/order')
 const cartRoutes = require('./routes/cart')
+const stripeRoutes = require('./routes/stripe')
 
 app.use(cors())
 app.use(express.json())
@@ -32,6 +33,7 @@ app.use('/api/user', userRoutes)
 app.use('/api/product', productRoutes)
 app.use('/api/order', orderRoutes)
 app.use('/api/cart', cartRoutes)
+app.use('/api/checkout', stripeRoutes)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
