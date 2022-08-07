@@ -1,6 +1,3 @@
-
-
-###
 # create new order
 POST {{base}}/order
 Content-Type: application/json
@@ -10,20 +7,44 @@ Authorization: Bearer {{token}}
     "userId": "62ee7b8f1c2d2e1b744cec0b",
     "products": [
         {
-            "productId": "dsffasfsdrewrewrg234",
+            "productId": "dsffasfsdrewrewrgasda",
             "quantity": 2
         },
         {
-            "productId": "dsffadasdrewrewrg234",
-            "quantity": 1
+            "productId": "dsffadasdrewrewrrewrew",
+            "quantity": 3
         }
     ],
-    "amount": 200,
+    "amount": 500,
     "address": "ENG"
 
 }
 
 ###
-# get monthly income
+# get monthly income, admin
 GET {{base}}/order/income
+Authorization: Bearer {{token}}
+
+###
+# update order, orderId, admin
+PUT {{base}}/order/62ee89a68fd45b22eea61b40
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "delivered"
+}
+
+###
+# delete order, orderId, admin
+DELETE {{base}}/order/62ee89a68fd45b22eea61b40
+Authorization: Bearer {{token}}
+
+###
+# get order, userId
+GET {{base}}/order/62ee7b8f1c2d2e1b744cec0b
+
+###
+# get all order, admin
+GET {{base}}/order
 Authorization: Bearer {{token}}

@@ -8,13 +8,13 @@ GET {{base}}/user
 GET {{base}}/user/?new=true
 
 ###
-# get user data by id, admin required
+# get user data by userId, admin required
 GET {{base}}/user/62ed15ba6ad9c305a2f16548
 Authorization: Bearer {{token}}
 
 
 ###
-# update user data by id
+# update user data by userId
 PUT {{base}}/user/62ed0051ed07eeab13bad061
 Content-Type: application/json
 Authorization: Bearer {{token}}
@@ -24,7 +24,7 @@ Authorization: Bearer {{token}}
 }
 
 ###
-# delete user data by id
+# delete user data by userId
 DELETE {{base}}/user/62ecff042db096177a665f7d
 Authorization: Bearer {{token}}
 

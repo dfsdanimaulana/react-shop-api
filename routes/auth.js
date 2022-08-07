@@ -7,7 +7,7 @@ const {
     decryptPassword
 } = require('../middleware/encryptPassword')
 
-// add new user to database asyncronously
+// register new user to database asyncronously
 router.post('/register', encryptPassword, async (req, res) => {
     const { username, email, password } = req.body
 
