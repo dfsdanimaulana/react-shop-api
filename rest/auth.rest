@@ -1,0 +1,20 @@
+###
+# Register new user
+POST {{base}}/auth/register
+content-type: application/json
+
+{
+    "username": "dani",
+    "email": "dani@google.com",
+    "password": "test"
+}
+
+###
+# login user
+POST {{base}}/auth/login
+content-type: application/json
+
+{
+    "username": "dani",
+    "password": "test"
+}

@@ -1,0 +1,33 @@
+
+
+
+###
+# create new product
+POST {{base}}/product
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "nike t-shirt",
+    "desc": "test",
+    "img": "test",
+    "categories": ["t-shirt", "women"],
+    "size": "medium",
+    "color": "yellow",
+    "price": 34
+}
+
+###
+# get all product
+GET {{base}}/product
+Authorization: Bearer {{token}}
+
+###
+# get all product with query
+GET {{base}}/product/?category=man
+Authorization: Bearer {{token}}
+
+###
+# get product by id
+GET {{base}}/product/62ee7b8f1c2d2e1b744cec0b
+Authorization: Bearer {{token}}

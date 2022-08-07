@@ -1,0 +1,35 @@
+# NOTE : REST CLIENT VSCODE EXTENSION IS REQUIRED FOR THIS TO WORK
+
+# get all user data
+GET {{base}}/user
+
+###
+# get all user data with query
+GET {{base}}/user/?new=true
+
+###
+# get user data by id, admin required
+GET {{base}}/user/62ed15ba6ad9c305a2f16548
+Authorization: Bearer {{token}}
+
+
+###
+# update user data by id
+PUT {{base}}/user/62ed0051ed07eeab13bad061
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "username": "test4"
+}
+
+###
+# delete user data by id
+DELETE {{base}}/user/62ecff042db096177a665f7d
+Authorization: Bearer {{token}}
+
+
+###
+#get user stats
+GET {{base}}/user/stats
+Authorization: Bearer {{token}}

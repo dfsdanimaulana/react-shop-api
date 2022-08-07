@@ -1,0 +1,29 @@
+
+
+###
+# create new order
+POST {{base}}/order
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "userId": "62ee7b8f1c2d2e1b744cec0b",
+    "products": [
+        {
+            "productId": "dsffasfsdrewrewrg234",
+            "quantity": 2
+        },
+        {
+            "productId": "dsffadasdrewrewrg234",
+            "quantity": 1
+        }
+    ],
+    "amount": 200,
+    "address": "ENG"
+
+}
+
+###
+# get monthly income
+GET {{base}}/order/income
+Authorization: Bearer {{token}}
